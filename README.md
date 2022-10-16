@@ -4,7 +4,6 @@ Demo online store demonstrating a monolith application
 # Application Structure
 ![Application Architecture](./resources/online-demo-legacy.png "Application Architecture")
 
-
 ## Running locally
 
 When running in docker, all components use port 5000 internal to the container, and are exposed at ports from 5000 upwards:
@@ -84,6 +83,9 @@ To be able to view the dashboard, create a prometheus datasource named *promethe
 ```
 docker-compose -f docker-compose.loadtests.yml up --build
 ```
+
+![Application Architecture](./resources/legacy-app-infra.png "Application Architecture")
+
 
 Expected results on terminal : 
 ```
