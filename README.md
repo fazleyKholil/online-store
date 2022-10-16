@@ -84,8 +84,8 @@ To be able to view the dashboard, create a prometheus datasource named *promethe
 docker-compose -f docker-compose.loadtests.yml up --build
 ```
 
-![Application Architecture](./resources/legacy-app-infra.png "Application Architecture")
 
+<img src="./resources/legacy-app-infra.png" width="700px"/>
 
 Expected results on terminal : 
 ```
