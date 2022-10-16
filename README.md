@@ -85,7 +85,7 @@ docker-compose -f docker-compose.loadtests.yml up --build
 ```
 
 
-<img src="./resources/legacy-app-infra.png" width="700px"/>
+<img src="./resources/legacy-app-infra.png" width="500px"/>
 
 Expected results on terminal : 
 ```
