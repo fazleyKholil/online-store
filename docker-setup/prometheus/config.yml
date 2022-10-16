@@ -1,0 +1,22 @@
+# my global config
+global:
+  scrape_interval:     1s
+  evaluation_interval: 5s
+  # scrape_timeout is set to the global default (10s).
+
+scrape_configs:
+  - job_name: prometheus
+
+    static_configs:
+      - targets: 
+        - 'localhost:9090'
+
+  - job_name: legacy-online-job
+
+    static_configs:
+      - targets: 
+        - 'legacy-application-1:5000'
+        - 'legacy-application-2:5000'
+        - 'legacy-application-3:5000'
+  
+    metrics_path: /_system/metrics-text

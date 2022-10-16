@@ -1,0 +1,88 @@
+version: '3.5'
+
+services:
+
+  legacy-application-1:
+    build:
+      context: .
+      dockerfile: src/OnlineStore.Legacy/Dockerfile
+    container_name: legacy-application-1
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://*:5000
+    ports:
+      - "5001:5000"
+    networks:
+      - onlinestore-legacy-network
+
+  legacy-application-2:
+    build:
+      context: .
+      dockerfile: src/OnlineStore.Legacy/Dockerfile
+    container_name: legacy-application-2
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://*:5000
+    ports:
+      - "5002:5000"
+    networks:
+      - onlinestore-legacy-network
+
+  legacy-application-3:
+    build:
+      context: .
+      dockerfile: src/OnlineStore.Legacy/Dockerfile
+    container_name: legacy-application-3
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://*:5000
+    ports:
+      - "5003:5000"
+    networks:
+      - onlinestore-legacy-network
+
+  nginx:
+    build: ./docker-setup/nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - legacy-application-1
+      - legacy-application-2
+      - legacy-application-3
+    networks:
+      - onlinestore-legacy-network
+
+  prometheus:
+    build:
+      context: ./docker-setup/prometheus
+      dockerfile: Dockerfile
+    container_name: prometheus
+    ports:
+      - '9090:9090'
+    networks:
+      - onlinestore-legacy-network
+
+  grafana:
+    build:
+      context: ./docker-setup/grafana
+      dockerfile: Dockerfile
+    container_name: grafana
+    ports:
+      - '3001:3000'
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel,snuids-trafficlights-panel,vonage-status-panel,flant-statusmap-panel
+    networks:
+      - onlinestore-legacy-network
+ 
+  influxdb:
+    image: influxdb:1.8
+    ports:
+      - "8086:8086"
+    environment:
+      - INFLUXDB_DB=k6
+    networks:
+      - onlinestore-legacy-network
+
+networks:
+  onlinestore-legacy-network:
+    name: onlinestore-legacy-network
