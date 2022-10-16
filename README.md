@@ -166,5 +166,3 @@ Fazley.Kholil@MAC-C02C96SNMD6M online-store-legacy % docker-compose -f docker-co
 
 Expected result on Grafana :
 ![image](resources/legacy-influx-result.png)
-
-## Useful links
