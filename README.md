@@ -1,4 +1,6 @@
 # online-store
+[![Build](https://github.com/fazleyKholil/online-store/actions/workflows/docker-compose-build.yml/badge.svg)](https://github.com/fazleyKholil/online-store/actions?query=workflow%3ABuild)
+
 Demo online store demonstrating a monolith application
 
 # Application Structure
