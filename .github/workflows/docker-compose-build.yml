@@ -21,6 +21,9 @@ jobs:
 
     - name: Start containers
       run: docker-compose up -d --build --force-recreate
+      
+    - name: Run Load Test
+      run: docker-compose -f docker-compose.loadtests.yml up --build
 
     - name: Stop containers
       if: always()
