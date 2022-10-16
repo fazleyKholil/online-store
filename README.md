@@ -1,5 +1,5 @@
 # online-store
-[![Build](https://github.com/fazleyKholil/online-store/actions/workflows/docker-compose-build.yml/badge.svg)](https://github.com/fazleyKholil/online-store/actions?query=workflow%3ABuild)
+[![Build and Load Test](https://github.com/fazleyKholil/online-store/actions/workflows/docker-compose-build.yml/badge.svg)](https://github.com/fazleyKholil/online-store/actions/workflows/docker-compose-build.yml)
 
 Demo online store demonstrating a monolith application
 
