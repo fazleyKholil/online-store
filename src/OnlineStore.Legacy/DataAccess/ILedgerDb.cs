@@ -8,5 +8,7 @@ namespace OnlineStore.Legacy.DataAccess
         Ledger GetLedger();
 
         Task<Ledger> UpdateLedger(decimal totalSales, decimal totalCost, decimal totalProfit, decimal netProfit);
+
+        Task<Ledger> UpdateLedgerOptimised(decimal totalSales, decimal totalCost, decimal totalProfit, decimal netProfit);
     }
 }

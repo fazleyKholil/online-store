@@ -40,8 +40,10 @@ namespace OnlineStore.Legacy.Services
             var netProfit = totalProfit - tax;
 
             //apply to ledger assume it takes several process/steps for demo purposed
-            await _ledgerDb.UpdateLedger(totalSales, totalCost, totalProfit, netProfit);
-
+            //lock optimisation after load test to improve performance
+            // await _ledgerDb.UpdateLedger(totalSales, totalCost, totalProfit, netProfit);
+            await _ledgerDb.UpdateLedgerOptimised(totalSales, totalCost, totalProfit, netProfit);
+            
             return _ledgerDb.GetLedger();
         }
     }

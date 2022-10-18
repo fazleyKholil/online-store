@@ -33,7 +33,7 @@ namespace OnlineStore.Legacy
             services.AddHealthChecks();
             services.AddAppMetricsHealthPublishing();
 
-            services.AddSingleton<IInventoryDb, InMemoryInventoryDb>();
+            services.AddSingleton<IInventoryDb, InventoryDb>();
             services.AddSingleton<ILedgerDb, InMemoryLedgerDb>();
 
             services.AddTransient<IShippingService, ShippingService>();

@@ -6,12 +6,12 @@ using OnlineStore.Legacy.Models;
 
 namespace OnlineStore.Legacy.DataAccess
 {
-    public class InMemoryInventoryDb : IInventoryDb
+    public class InventoryDb : IInventoryDb
     {
         private readonly IMetrics _metrics;
-        private List<Product> _products;
+        private readonly List<Product> _products;
 
-        public InMemoryInventoryDb(IMetrics metrics)
+        public InventoryDb(IMetrics metrics)
         {
             _metrics = metrics;
             _products = InitialiseProduct();
@@ -24,17 +24,18 @@ namespace OnlineStore.Legacy.DataAccess
 
         public async Task UpdateStock(string productId, int quantity)
         {
-            //simulate real life latency
-            await Task.Delay(ExternalServicesConst.InventoryLatency);
-
             var product = _products.FirstOrDefault(p => p.ProductId == productId);
 
             if (product != null)
                 product.Quantity -= quantity;
+
+            //simulating db update
+            await Task.Delay(ExternalServicesConst.InventoryLatency);
         }
 
-        private List<Product> InitialiseProduct()
+        private static List<Product> InitialiseProduct()
         {
+            //fake db retrieve products
             return new List<Product>()
             {
                 new Product {ProductId = "0acc81de-de63-45b5-864a-dd6637a75ca4", Description = "T-Shirt", Quantity = 100, BuyingPrice = 50, SellingPrice = 150},

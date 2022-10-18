@@ -1,7 +1,7 @@
 # online-store
 [![Build and Load Test](https://github.com/fazleyKholil/online-store/actions/workflows/docker-compose-build.yml/badge.svg)](https://github.com/fazleyKholil/online-store/actions/workflows/docker-compose-build.yml)
 
-Demo online store demonstrating a monolith application
+Demo online store demonstrating a monolith application and how the architecture was redesigned to make it more scalable
 
 # Application Structure
 ![Application Architecture](./resources/online-demo-legacy.png "Application Architecture")
